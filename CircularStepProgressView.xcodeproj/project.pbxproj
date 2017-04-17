@@ -12,9 +12,13 @@
 		A48F81F21EA5854600C0E604 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A48F81F01EA5854600C0E604 /* Main.storyboard */; };
 		A48F81F41EA5854600C0E604 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A48F81F31EA5854600C0E604 /* Assets.xcassets */; };
 		A48F81F71EA5854600C0E604 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A48F81F51EA5854600C0E604 /* LaunchScreen.storyboard */; };
+		A48F81FF1EA5859B00C0E604 /* CircularStepProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F81FE1EA5859B00C0E604 /* CircularStepProgressView.swift */; };
+		AAA3CC1A75381E625F20A15A /* Pods_CircularStepProgressView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0733DADAD17E56FDF3CE2134 /* Pods_CircularStepProgressView.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0733DADAD17E56FDF3CE2134 /* Pods_CircularStepProgressView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CircularStepProgressView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DD8468175779FAF564A154D /* Pods-CircularStepProgressView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CircularStepProgressView.release.xcconfig"; path = "Pods/Target Support Files/Pods-CircularStepProgressView/Pods-CircularStepProgressView.release.xcconfig"; sourceTree = "<group>"; };
 		A48F81E91EA5854600C0E604 /* CircularStepProgressView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CircularStepProgressView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A48F81EC1EA5854600C0E604 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A48F81EE1EA5854600C0E604 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +26,8 @@
 		A48F81F31EA5854600C0E604 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A48F81F61EA5854600C0E604 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A48F81F81EA5854600C0E604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A48F81FE1EA5859B00C0E604 /* CircularStepProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularStepProgressView.swift; sourceTree = "<group>"; };
+		FDF1B55C3F6940802A393FFB /* Pods-CircularStepProgressView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CircularStepProgressView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CircularStepProgressView/Pods-CircularStepProgressView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAA3CC1A75381E625F20A15A /* Pods_CircularStepProgressView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		247A11265B2B255BDEA0D094 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0733DADAD17E56FDF3CE2134 /* Pods_CircularStepProgressView.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61B8C66E76CE193212FDBEFD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FDF1B55C3F6940802A393FFB /* Pods-CircularStepProgressView.debug.xcconfig */,
+				2DD8468175779FAF564A154D /* Pods-CircularStepProgressView.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A48F81E01EA5854600C0E604 = {
 			isa = PBXGroup;
 			children = (
 				A48F81EB1EA5854600C0E604 /* CircularStepProgressView */,
 				A48F81EA1EA5854600C0E604 /* Products */,
+				61B8C66E76CE193212FDBEFD /* Pods */,
+				247A11265B2B255BDEA0D094 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +86,7 @@
 				A48F81F31EA5854600C0E604 /* Assets.xcassets */,
 				A48F81F51EA5854600C0E604 /* LaunchScreen.storyboard */,
 				A48F81F81EA5854600C0E604 /* Info.plist */,
+				A48F81FE1EA5859B00C0E604 /* CircularStepProgressView.swift */,
 			);
 			path = CircularStepProgressView;
 			sourceTree = "<group>";
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A48F81FB1EA5854600C0E604 /* Build configuration list for PBXNativeTarget "CircularStepProgressView" */;
 			buildPhases = (
+				6321AFB825C4FED25342ED3A /* [CP] Check Pods Manifest.lock */,
 				A48F81E51EA5854600C0E604 /* Sources */,
 				A48F81E61EA5854600C0E604 /* Frameworks */,
 				A48F81E71EA5854600C0E604 /* Resources */,
+				5EA9BCD53A6F4497A3B47A84 /* [CP] Embed Pods Frameworks */,
+				83180941575A3A99CB279739 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -132,12 +162,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5EA9BCD53A6F4497A3B47A84 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CircularStepProgressView/Pods-CircularStepProgressView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6321AFB825C4FED25342ED3A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		83180941575A3A99CB279739 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CircularStepProgressView/Pods-CircularStepProgressView-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A48F81E51EA5854600C0E604 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				A48F81EF1EA5854600C0E604 /* ViewController.swift in Sources */,
+				A48F81FF1EA5859B00C0E604 /* CircularStepProgressView.swift in Sources */,
 				A48F81ED1EA5854600C0E604 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +340,7 @@
 		};
 		A48F81FC1EA5854600C0E604 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDF1B55C3F6940802A393FFB /* Pods-CircularStepProgressView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 85375DWK48;
@@ -274,6 +354,7 @@
 		};
 		A48F81FD1EA5854600C0E604 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2DD8468175779FAF564A154D /* Pods-CircularStepProgressView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 85375DWK48;

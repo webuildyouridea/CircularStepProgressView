@@ -1,0 +1,6 @@
+framework module Pods_CircularStepProgressView {
+  umbrella header "Pods-CircularStepProgressView-umbrella.h"
+
+  export *
+  module * { export * }
+}

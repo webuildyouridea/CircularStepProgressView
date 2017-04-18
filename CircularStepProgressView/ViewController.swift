@@ -18,6 +18,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         loadSteps()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        circleView.animate(toStep: 8)
+    }
 
     func loadSteps() {
         circleView = CircularStepProgressView(frame: CGRect(x: 0,
@@ -32,7 +37,7 @@ class ViewController: UIViewController {
         
         view.addSubview(circleView)
         
-        startTimer()
+        //startTimer()
     }
     
     func addPoint(_ timer: Timer) {

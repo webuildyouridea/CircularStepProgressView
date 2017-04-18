@@ -21,7 +21,7 @@ public class CircularStepProgressView: UIView {
     var completeLayer: CAShapeLayer!
     var circlePoints:[CAShapeLayer] = []
     var pointDuration: CFTimeInterval = 0.4
-    var points: Int = 0
+    public var points: Int = 0
     public var steps: Int = 10 {
         didSet {
             drawSteps()
@@ -193,7 +193,7 @@ public class CircularStepProgressView: UIView {
         return points
     }
     
-    func addPoint() {
+    public func addPoint() {
         guard points < steps else {
             return
         }
@@ -211,6 +211,48 @@ public class CircularStepProgressView: UIView {
         animateProgressBar()
         animateCircle()
         
+    }
+    
+    public func animate(toStep step: Int) {
+        let fillStrokeAnimation = POPBasicAnimation(propertyNamed: kPOPShapeLayerStrokeEnd)!
+        fillStrokeAnimation.duration = pointDuration
+        fillStrokeAnimation.fromValue = 0
+        fillStrokeAnimation.toValue = progressPoint * CGFloat(step)
+        fillStrokeAnimation.removedOnCompletion = false
+        fillStrokeAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        progressLayer.pop_add(fillStrokeAnimation, forKey: "FillStrokeAnimation")
+        
+        progress = progressPoint * CGFloat(step)
+        points = step
+        
+        animateCircles(toStep: step)
+    }
+    
+    func animateCircles(toStep step: Int) {
+        let circleDuration = pointDuration / CFTimeInterval(step+1)
+        var begintime = CACurrentMediaTime()
+        for i in 0..<step {
+            let pointLayer = circlePoints[i]
+            begintime = begintime + circleDuration
+            let fillColorAnimation = POPBasicAnimation(propertyNamed: kPOPShapeLayerFillColor)!
+            fillColorAnimation.beginTime = begintime
+            fillColorAnimation.duration = 0.001
+            fillColorAnimation.removedOnCompletion = false
+            fillColorAnimation.fromValue = circleColor.cgColor
+            fillColorAnimation.toValue = fillColor.cgColor
+            fillColorAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+            
+            let strokeColorAnimation = POPBasicAnimation(propertyNamed: kPOPShapeLayerStrokeColor)!
+            strokeColorAnimation.beginTime = begintime
+            strokeColorAnimation.duration = 0.001
+            strokeColorAnimation.removedOnCompletion = false
+            strokeColorAnimation.fromValue = backColor.cgColor
+            strokeColorAnimation.toValue = fillColor.cgColor
+            strokeColorAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+            
+            pointLayer.pop_add(fillColorAnimation, forKey: "FillCircle")
+            pointLayer.pop_add(strokeColorAnimation, forKey: "FillStroke")
+        }
     }
     
     func animateProgressBar() {

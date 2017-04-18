@@ -27,10 +27,48 @@ public class CircularStepProgressView: UIView {
             drawSteps()
         }
     }
-    
-    var fillColor: UIColor = UIColor(red: 1.000, green: 0.281, blue: 0.000, alpha: 1.000)
-    var backColor: UIColor = UIColor(red: 0.777, green: 0.751, blue: 0.751, alpha: 1.000)
-    var circleColor: UIColor = UIColor.white
+    public var fillColor: UIColor = UIColor(red: 1.000, green: 0.281, blue: 0.000, alpha: 1.000){
+        didSet {
+            configureInitial()
+            drawSteps()
+        }
+    }
+    public var backColor: UIColor = UIColor(red: 0.777, green: 0.751, blue: 0.751, alpha: 1.000){
+        didSet {
+            configureInitial()
+            drawSteps()
+        }
+    }
+    public var circleColor: UIColor = UIColor.white{
+        didSet {
+            configureInitial()
+            drawSteps()
+        }
+    }
+    public var pathLineWidth:CGFloat = 9.0{
+        didSet {
+            configureInitial()
+            drawSteps()
+        }
+    }
+    public var circleLineWidth:CGFloat = 1.0{
+        didSet {
+            configureInitial()
+            drawSteps()
+        }
+    }
+    public var padding:CGFloat = 12.0{
+        didSet {
+            configureInitial()
+            drawSteps()
+        }
+    }
+    public var circleRadius:CGFloat = 15.0{
+        didSet {
+            configureInitial()
+            drawSteps()
+        }
+    }
     
     private var progress: CGFloat = 0
     private var radius: CGFloat = 0
@@ -49,26 +87,35 @@ public class CircularStepProgressView: UIView {
     }
     
     fileprivate func configureInitial() {
+        if let backgroundCircleLayer = backgroundCircleLayer {
+            backgroundCircleLayer.removeFromSuperlayer()
+        }
+        if let progressLayer = progressLayer {
+            progressLayer.removeFromSuperlayer()
+        }
+        if let completeLayer = completeLayer {
+            completeLayer.removeFromSuperlayer()
+        }
         self.backgroundColor = UIColor.clear
         
-        radius = (bounds.width - bounds.width/8)/2
+        radius = (bounds.width - padding - circleRadius)/2
         
         let ovalPath = UIBezierPath()
-        ovalPath.addArc(withCenter: CGPoint(x: bounds.midX, y: bounds.midY), radius: radius, startAngle: -239 * CGFloat.pi/180, endAngle: 59 * CGFloat.pi/180, clockwise: true)
+        ovalPath.addArc(withCenter: CGPoint(x: bounds.midX, y: bounds.midY), radius: radius, startAngle: -250 * CGFloat.pi/180, endAngle: 70 * CGFloat.pi/180, clockwise: true)
         
         
         backgroundCircleLayer = CAShapeLayer()
         backgroundCircleLayer.path = ovalPath.cgPath
         backgroundCircleLayer.fillColor = UIColor.clear.cgColor
         backgroundCircleLayer.strokeColor = backColor.cgColor
-        backgroundCircleLayer.lineWidth = 10.0;
+        backgroundCircleLayer.lineWidth = pathLineWidth;
         backgroundCircleLayer.lineCap = kCALineCapRound
         
         progressLayer = CAShapeLayer()
         progressLayer.path = ovalPath.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
         progressLayer.strokeColor = fillColor.cgColor
-        progressLayer.lineWidth = 10.0;
+        progressLayer.lineWidth = pathLineWidth;
         progressLayer.lineCap = kCALineCapRound
         progressLayer.strokeEnd = 0
         
@@ -76,7 +123,7 @@ public class CircularStepProgressView: UIView {
         completeLayer.path = ovalPath.cgPath
         completeLayer.fillColor = UIColor.clear.cgColor
         completeLayer.strokeColor = backColor.cgColor
-        completeLayer.lineWidth = 10.0;
+        completeLayer.lineWidth = pathLineWidth;
         completeLayer.lineCap = kCALineCapRound
         completeLayer.strokeEnd = 0
         
@@ -93,14 +140,14 @@ public class CircularStepProgressView: UIView {
             circlePoints.removeAll()
         }
         
-        var points = circleCircumferencePoints(steps + 1, bounds.midX, bounds.midY, (bounds.width - bounds.width/9)/2, 301)
+        var points = circleCircumferencePoints(steps + 1, bounds.midX, bounds.midY, (bounds.width - padding - circleRadius)/2, 286)
         progressPoint = 1.0 / CGFloat(steps + 1)
         points.removeFirst()
         points.removeLast()
         for point in points {
             
             // decide on radius
-            let rad = radius/12
+            let rad = circleRadius
             
             let endAngle = CGFloat(2*Double.pi)
             
@@ -116,7 +163,7 @@ public class CircularStepProgressView: UIView {
             newCircleLayer.path = circlePath.cgPath
             newCircleLayer.anchorPoint = point
             newCircleLayer.fillColor = circleColor.cgColor
-            newCircleLayer.lineWidth = 3.0;
+            newCircleLayer.lineWidth = circleLineWidth;
             newCircleLayer.strokeColor = backColor.cgColor
             layer.addSublayer(newCircleLayer)
             circlePoints.append(newCircleLayer)
@@ -131,10 +178,10 @@ public class CircularStepProgressView: UIView {
     }
     
     func circleCircumferencePoints(_ sides:Int,_ x:CGFloat,_ y:CGFloat,_ radius:CGFloat,_ adjustment:CGFloat=0)->[CGPoint] {
-        let angle = degree2radian(298/CGFloat(sides))
+        let angle = degree2radian(330/CGFloat(sides))
         let cx = x // x origin
         let cy = y // y origin
-        let r  = radius - 2.5 // radius of circle
+        let r  = radius // radius of circle
         var i = sides
         var points = [CGPoint]()
         while points.count <= sides {

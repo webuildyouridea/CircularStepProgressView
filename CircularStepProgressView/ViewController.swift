@@ -27,6 +27,8 @@ class ViewController: UIViewController {
         )
         circleView.delegate = self
         circleView.steps = 10
+        circleView.backColor = UIColor.green
+        circleView.fillColor = UIColor.yellow
         
         view.addSubview(circleView)
         

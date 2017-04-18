@@ -7,4 +7,5 @@ target 'CircularStepProgressView' do
 
   # Pods for CircularStepProgressView
   pod 'pop', '~> 1.0'
+  pod 'PureLayout'
 end

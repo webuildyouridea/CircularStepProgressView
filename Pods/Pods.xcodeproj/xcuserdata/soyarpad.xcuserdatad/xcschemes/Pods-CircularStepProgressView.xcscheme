@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B1FF4E1775004DB310E5470E4CDBB3C4"
+               BlueprintIdentifier = "6EECA76A133E17D3E8D6EB565A1BFDEF"
                BuildableName = "Pods_CircularStepProgressView.framework"
                BlueprintName = "Pods-CircularStepProgressView"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B1FF4E1775004DB310E5470E4CDBB3C4"
+            BlueprintIdentifier = "6EECA76A133E17D3E8D6EB565A1BFDEF"
             BuildableName = "Pods_CircularStepProgressView.framework"
             BlueprintName = "Pods-CircularStepProgressView"
             ReferencedContainer = "container:Pods.xcodeproj">

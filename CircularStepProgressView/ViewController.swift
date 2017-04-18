@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PureLayout
 
 class ViewController: UIViewController {
     
@@ -14,47 +15,25 @@ class ViewController: UIViewController {
     var timer:Timer!
     var index:Int = 1
 
+    @IBOutlet weak var progressView: CircularStepProgressView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadSteps()
+        
+        progressView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        circleView.animate(toStep: 8)
-    }
-
-    func loadSteps() {
-        circleView = CircularStepProgressView(frame: CGRect(x: 0,
-                                                        y: 0,
-                                                        width: view.bounds.width,
-                                                        height: view.bounds.width)
-        )
-        circleView.delegate = self
-        circleView.steps = 10
-        circleView.backColor = UIColor.green
-        circleView.fillColor = UIColor.yellow
-        
-        view.addSubview(circleView)
-        
-        //startTimer()
+        progressView.animate(toStep: 8)
+        index = 8
     }
     
-    func addPoint(_ timer: Timer) {
-        circleView.addPoint()
+    @IBAction func addPoint(sender: UIButton) {
+        progressView.addPoint()
         index = index + 1
-        if index == 11 {
+        if index == 10 {
             index = 0
-            timer.invalidate()
         }
-    }
-    
-    func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 2,
-                                     target: self,
-                                     selector: #selector(self.addPoint(_:)),
-                                     userInfo: nil,
-                                     repeats: true)
     }
 }
 

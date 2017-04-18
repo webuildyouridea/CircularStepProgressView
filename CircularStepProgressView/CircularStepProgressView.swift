@@ -13,6 +13,7 @@ public protocol CircularStepProgressDelegate: class {
     func didFinishCompleteAnimation(sender: CircularStepProgressView)
 }
 
+@IBDesignable
 public class CircularStepProgressView: UIView {
 
     weak public var delegate: CircularStepProgressDelegate?
@@ -22,47 +23,55 @@ public class CircularStepProgressView: UIView {
     var circlePoints:[CAShapeLayer] = []
     var pointDuration: CFTimeInterval = 0.4
     public var points: Int = 0
+    @IBInspectable
     public var steps: Int = 10 {
         didSet {
             drawSteps()
         }
     }
+    @IBInspectable
     public var fillColor: UIColor = UIColor(red: 1.000, green: 0.281, blue: 0.000, alpha: 1.000){
         didSet {
             configureInitial()
             drawSteps()
         }
     }
+    @IBInspectable
     public var backColor: UIColor = UIColor(red: 0.777, green: 0.751, blue: 0.751, alpha: 1.000){
         didSet {
             configureInitial()
             drawSteps()
         }
     }
+    @IBInspectable
     public var circleColor: UIColor = UIColor.white{
         didSet {
             configureInitial()
             drawSteps()
         }
     }
+    @IBInspectable
     public var pathLineWidth:CGFloat = 9.0{
         didSet {
             configureInitial()
             drawSteps()
         }
     }
+    @IBInspectable
     public var circleLineWidth:CGFloat = 1.0{
         didSet {
             configureInitial()
             drawSteps()
         }
     }
+    @IBInspectable
     public var padding:CGFloat = 12.0{
         didSet {
             configureInitial()
             drawSteps()
         }
     }
+    @IBInspectable
     public var circleRadius:CGFloat = 15.0{
         didSet {
             configureInitial()
@@ -80,6 +89,13 @@ public class CircularStepProgressView: UIView {
         super.init(frame: frame)
         
         configureInitial()
+    }
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        configureInitial()
+        drawSteps()
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -200,6 +216,7 @@ public class CircularStepProgressView: UIView {
         
         if points == 0 {
             completeLayer.pop_removeAllAnimations()
+            progressLayer.pop_removeAllAnimations()
         }
         
         if points == steps - 1 {
@@ -358,10 +375,15 @@ public class CircularStepProgressView: UIView {
     
     func pop_animationDidStop(_ anim: POPAnimation!, finished: Bool) {
         if anim.name == "FillStrokeEndAnimation" {
-            animateReverse()
-            animatePointsReverse()
+            if finished {
+                animateReverse()
+                animatePointsReverse()
+            }
         } else if anim.name == "EndAnimation" {
-            delegate?.didFinishCompleteAnimation(sender: self)
+            if finished {
+                completeLayer.strokeEnd = 0
+                delegate?.didFinishCompleteAnimation(sender: self)
+            }
         }
         
     }

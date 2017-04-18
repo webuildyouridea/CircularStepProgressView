@@ -9,20 +9,20 @@
 import UIKit
 import pop
 
-protocol CircularStepProgressDelegate: class {
+public protocol CircularStepProgressDelegate: class {
     func didFinishCompleteAnimation(sender: CircularStepProgressView)
 }
 
-class CircularStepProgressView: UIView {
+public class CircularStepProgressView: UIView {
 
-    weak var delegate: CircularStepProgressDelegate?
+    weak public var delegate: CircularStepProgressDelegate?
     var backgroundCircleLayer: CAShapeLayer!
     var progressLayer: CAShapeLayer!
     var completeLayer: CAShapeLayer!
     var circlePoints:[CAShapeLayer] = []
     var pointDuration: CFTimeInterval = 0.4
     var points: Int = 0
-    var steps: Int = 10 {
+    public var steps: Int = 10 {
         didSet {
             drawSteps()
         }
@@ -38,13 +38,13 @@ class CircularStepProgressView: UIView {
     
     
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         
         configureInitial()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

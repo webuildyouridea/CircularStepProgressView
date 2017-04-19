@@ -13,7 +13,6 @@ public protocol CircularStepProgressDelegate: class {
     func didFinishCompleteAnimation(sender: CircularStepProgressView)
 }
 
-@IBDesignable
 public class CircularStepProgressView: UIView {
 
     weak public var delegate: CircularStepProgressDelegate?
@@ -23,55 +22,48 @@ public class CircularStepProgressView: UIView {
     var circlePoints:[CAShapeLayer] = []
     var pointDuration: CFTimeInterval = 0.4
     public var points: Int = 0
-    @IBInspectable
+    
     public var steps: Int = 10 {
         didSet {
             drawSteps()
         }
     }
-    @IBInspectable
     public var fillColor: UIColor = UIColor(red: 1.000, green: 0.281, blue: 0.000, alpha: 1.000){
         didSet {
             configureInitial()
             drawSteps()
         }
     }
-    @IBInspectable
     public var backColor: UIColor = UIColor(red: 0.777, green: 0.751, blue: 0.751, alpha: 1.000){
         didSet {
             configureInitial()
             drawSteps()
         }
     }
-    @IBInspectable
     public var circleColor: UIColor = UIColor.white{
         didSet {
             configureInitial()
             drawSteps()
         }
     }
-    @IBInspectable
     public var pathLineWidth:CGFloat = 9.0{
         didSet {
             configureInitial()
             drawSteps()
         }
     }
-    @IBInspectable
     public var circleLineWidth:CGFloat = 1.0{
         didSet {
             configureInitial()
             drawSteps()
         }
     }
-    @IBInspectable
     public var padding:CGFloat = 12.0{
         didSet {
             configureInitial()
             drawSteps()
         }
     }
-    @IBInspectable
     public var circleRadius:CGFloat = 15.0{
         didSet {
             configureInitial()

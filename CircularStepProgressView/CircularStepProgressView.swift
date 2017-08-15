@@ -92,6 +92,8 @@ public class CircularStepProgressView: UIView {
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
+        configureInitial()
     }
     
     fileprivate func configureInitial() {
